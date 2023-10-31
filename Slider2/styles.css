@@ -1,0 +1,160 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --spring-color: #2dd71a;
+  --summer-color: #eeee0c;
+  --autumn-color: #f3920b;
+  --winter-color: #0e84c4;
+}
+
+[data-bg='spring'] {
+  background-color: var(--spring-color);
+}
+
+[data-bg='summer'] {
+  background-color: var(--summer-color);
+}
+
+[data-bg='autumn'] {
+  background-color: var(--autumn-color);
+}
+
+[data-bg='winter'] {
+  background-color: var(--winter-color);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  height: 100vh;
+}
+
+.wrapper {
+  display: flex;
+  padding: 0.5em;
+  width: 1200px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4);
+}
+
+.card {
+  position: relative;
+  flex-grow: 0.9;
+  height: 600px;
+  margin: 4px;
+  border-radius: 10px;
+  background-size: cover;
+  transition: flex-grow 0.8s;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  transition: opacity 0.5s;
+}
+
+.spring {
+  background-image: url('https://cdn.pixabay.com/photo/2022/02/12/18/41/spring-7009639_1280.jpg');
+}
+.summer {
+  background-image: url('https://cdn.pixabay.com/photo/2016/11/21/03/56/landscape-1844227_1280.png');
+}
+.autumn {
+  background-image: url('https://cdn.pixabay.com/photo/2021/09/13/07/57/trees-6620586_1280.png');
+}
+.winter {
+  background-image: url('https://cdn.pixabay.com/photo/2020/01/04/18/40/trees-4741364_1280.png');
+}
+
+.spring::before,
+.summer::before,
+.autumn::before,
+.winter::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+}
+
+.spring::before {
+  background-color: var(--spring-color);
+}
+.summer::before {
+  background-color: var(--summer-color);
+}
+.autumn::before {
+  background-color: var(--autumn-color);
+}
+.winter::before {
+  background-color: var(--winter-color);
+}
+
+.text {
+  position: absolute;
+  left: 50%;
+  bottom: 10%;
+  transform: translateX(-50%);
+  width: 80%;
+  padding: 2em;
+  color: #fff;
+  border-radius: 6px;
+  z-index: 5;
+}
+
+.text h2 {
+  text-transform: uppercase;
+  transform: rotate(-90deg);
+}
+
+.text p {
+  display: none;
+  opacity: 0;
+  font-size: 1.6rem;
+}
+
+.active {
+  flex-grow: 8;
+}
+
+.active .text {
+  animation: show-bg 1s 0.3s forwards;
+}
+
+.active .text h2 {
+  display: none;
+}
+.active .text p {
+  display: block;
+  animation: show-text 1s 0.6s forwards;
+}
+
+.card.active::after {
+  opacity: 0;
+}
+
+@keyframes show-bg {
+  to {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+}
+@keyframes show-text {
+  to {
+    opacity: 1;
+  }
+}
