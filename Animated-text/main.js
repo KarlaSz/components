@@ -5,7 +5,7 @@ const saveBtn = document.querySelector('.save-btn')
 const text = document.querySelector('.text')
 const errorMsg = document.querySelector('.error-text')
 
-let inputValue = 'test text bla bla'
+let inputValue = ''
 let timeout
 let index = 1
 let speed = 80
