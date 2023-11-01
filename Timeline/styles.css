@@ -1,0 +1,79 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  background-color: #4dae97;
+  min-height: 100vh;
+  color: #fff;
+}
+
+h1 {
+  margin-bottom: 3em;
+}
+
+.timeline {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+}
+
+.timeline ul {
+  display: flex;
+  flex-direction: column;
+  margin: 0.2em;
+  list-style: none;
+}
+
+.timeline li {
+  position: relative;
+  margin-bottom: 2em;
+  padding: 2em;
+  width: 50%;
+  border: 1px solid #fff;
+  border-radius: 8px;
+}
+
+.timeline li::after {
+  content: '';
+  position: absolute;
+  top: calc(50% - 10px);
+  background-color: #fff;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+/* // co ktorsy parzysty na flex end i transformem przesuwamy na prawo*/
+.timeline li:nth-child(even) {
+  align-self: flex-end;
+  transform: translateX(30px);
+}
+.timeline li:nth-child(even)::after {
+  left: -41px;
+}
+
+.timeline li:nth-child(odd) {
+  transform: translateX(-30px);
+}
+.timeline li:nth-child(odd)::after {
+  right: -40px;
+}
+
+.timeline::before {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  content: '';
+  width: 3px;
+  height: 100%;
+  background-color: #fff;
+}
